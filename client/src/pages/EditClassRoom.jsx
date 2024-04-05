@@ -243,6 +243,11 @@ const getQuestionsArray = () => {
               </DialogContent>
             </Dialog>
           </div>
+          <div className="">
+          <div className="p-3 flex gap-2 font-medium tracking-wide text-slate-100 text-sm border border-sky-600 hover:bg-blue-500 hover:text-white hover:cursor-pointer rounded-xl">
+                   View Student Status
+                </div>
+          </div>
         </div>
 
         <div className="flex w-full">

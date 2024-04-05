@@ -118,3 +118,12 @@ export const viewClassroom = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 }
+
+export const getCreatorClassrooms = async (req, res) => {
+    const { token } = req.body;
+    const creatorId = jwt.verify(token, process.env.JWT_SECRET).id;
+    const creator = await Creator.findById(creatorId);
+    const classroomIds = creator.classroomCreated;
+    const classrooms = await ClassroomModel.find({ _id: { $in: classroomIds } });
+    res.status(200).json({ classrooms });
+}
