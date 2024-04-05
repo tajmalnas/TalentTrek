@@ -31,7 +31,10 @@ import CreatorEdit from "./pages/CreatorEdit";
 import CreateCourse from "./pages/CreateCourse";
 import EditCourse from "./pages/EditCourse";
 import MyCoursesCreator from "./pages/MyCoursesCreator";
-// axios.defaults.baseURL = "https://hiretainity.onrender.com/";
+import CreateClasroom from "./pages/CreateClassroom";
+import EditClassRoom from "./pages/EditClassRoom";
+import EnrolledClass from "./components/EnrolledClass";
+import ViewClassroom from "./pages/ViewClassroom";
 
 axios.defaults.baseURL = "http://localhost:5000/";
 
@@ -125,6 +128,11 @@ function App() {
             <Route path="/edit-course/:id" element={<EditCourse/>}/>
             <Route path="/my-created-courses" element={<MyCoursesCreator/>}/>
 
+            <Route path="/create-classroom" element={<CreateClasroom/>}/>
+            <Route path="/edit-classroom/:id" element={<EditClassRoom/>}/>
+
+            <Route path="/enrolled-classroom" element={<EnrolledClass/>}/>
+            <Route path="/classroom/:id" element={<ViewClassroom/>}/>
           </Routes>
         </div>
       </div>

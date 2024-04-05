@@ -150,9 +150,9 @@ const Sidebar = () => {
                 )}
                 {getRole==="creator"?(
                   <Link
-                    to={"/"}
+                    to={"/create-classroom"}
                     className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                    href="#"
+                    href="/create-classroom"
                   >
                     <Dock />
                     <span className="mx-2 font-medium">Create ClassRoom</span>
@@ -169,12 +169,12 @@ const Sidebar = () => {
                   </Link>
                 ) : (
                   <Link
-                    to={"/my-applied-jobs"}
+                    to={"/enrolled-classroom"}
                     className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                     href="#"
                   >
                     <Dock />
-                    <span className="mx-2 font-medium">My Applications</span>
+                    <span className="mx-2 font-medium">Enrolled Classes</span>
                   </Link>
                 )}
               </div>
