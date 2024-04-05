@@ -60,6 +60,12 @@ const candidateSchema = new Schema(
         ref: "projectModel",
       },
     ],
+    classroomEnrolled: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "ClassroomModel",
+      },
+    ],
   },
   {
     timestamps: true,
