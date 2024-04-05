@@ -33,23 +33,22 @@ const classroomSchema = new Schema({
     students: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "studentModel",
+            ref: "Candidate",
         },
     ],
     creator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "creatorModel",
     },
-    course: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "courseModel",
-    },
-    classroomJoined: [
+    questions: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "classroomModel",
-        },
+            type : String,
+        }
     ],
+    classRoomCode : {
+        type: String,
+        required: true,
+    },
 },
 {
     timestamps: true,
