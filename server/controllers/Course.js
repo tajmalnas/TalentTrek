@@ -80,4 +80,23 @@ const addVideo = async (req, res) => {
     }
 }
 
-export { addCourse, getCourse,addVideo};
+const getMyCreatedCourses = async (req, res) => {
+    const { token } = req.body;
+    if (!token) {
+        return res.status(400).json({ msg: 'All fields are required' });
+    }
+    try{
+        const userId = jwt.verify(token, process.env.JWT_SECRET).id;
+        const creator = await Creator.findById(userId);
+        if (!creator) {
+            return res.status(400).json({msg: 'user not found'});
+        }
+        const courses = await Course.find({uploader: userId});
+        return res.json(courses);
+    }
+    catch(err){
+        return res.status(500).json({msg: err.message});
+    }
+}
+
+export { addCourse, getCourse,addVideo,getMyCreatedCourses};

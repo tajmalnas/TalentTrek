@@ -30,6 +30,7 @@ import Feedback from "./components/Feedback";
 import CreatorEdit from "./pages/CreatorEdit";
 import CreateCourse from "./pages/CreateCourse";
 import EditCourse from "./pages/EditCourse";
+import MyCoursesCreator from "./pages/MyCoursesCreator";
 // axios.defaults.baseURL = "https://hiretainity.onrender.com/";
 
 axios.defaults.baseURL = "http://localhost:5000/";
@@ -122,6 +123,7 @@ function App() {
             
             <Route path="/create-course" element={<CreateCourse/>}/>
             <Route path="/edit-course/:id" element={<EditCourse/>}/>
+            <Route path="/my-created-courses" element={<MyCoursesCreator/>}/>
 
           </Routes>
         </div>

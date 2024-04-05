@@ -155,7 +155,6 @@ const Sidebar = () => {
                     href="#"
                   >
                     <Dock />
-
                     <span className="mx-2 font-medium">Create ClassRoom</span>
                   </Link>
                 ):getRole === "recruiter" ? (
@@ -201,14 +200,24 @@ const Sidebar = () => {
                   </Link>
                 )}
 
-                <Link
+                {getRole==="creator"?(
+                  <Link
+                  className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                  to={"my-created-courses"}
+                >
+                  <Bot />
+
+                  <span className="mx-2 font-medium">Uploaded Courses</span>
+                </Link>
+                )
+                :(<Link
                   className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   to={"/ai-interview/12345"}
                 >
                   <Bot />
 
                   <span className="mx-2 font-medium">AI Interview</span>
-                </Link>
+                </Link>)}
               </div>
 
               <div className="space-y-3 ">
