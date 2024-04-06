@@ -1,5 +1,5 @@
 import express from "express";
-import { createClassroom, getClassroom , addVideo, getEnrolledClassroom, enrollCandidate} from "../controllers/classRoom.js";
+import { createClassroom, getClassroom , addVideo, getEnrolledClassroom, enrollCandidate,viewClassroom} from "../controllers/classRoom.js";
 
 const router = express.Router();
 

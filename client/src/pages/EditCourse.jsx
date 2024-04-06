@@ -8,11 +8,13 @@ import { imageDb } from "@/firebase/firebaseConfig";
 import { v4 } from "uuid";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import AITestCreation from "./AITestCreation";
+import FinalTest from "./FinalTest";
 
 const EditCourse = () => {
     const location = useLocation();
     console.log(location);
     const courseId = location.pathname.split("/")[2];
+    const [courseInfo,setCourseInfo] = useState({})
     const [courseVideos, setCourseVideos] = useState([]);
     const [videoName, setVideoName] = useState('')
     const [videoUrl, setVideoUrl] = useState('')
@@ -25,6 +27,7 @@ const EditCourse = () => {
             }).then((res) => {
                 console.log("response",res)
                 setCourseVideos(res.data.videos);
+                setCourseInfo(res.data);
                 console.log("courseVideos",courseVideos)
             }).catch((err) => {
                 console.log(err.response);
@@ -76,8 +79,8 @@ const EditCourse = () => {
     },[])
 
   return (
-    <div className="text-white">
-        <div className="text-center text-4xl">Edit Course</div>
+    <div className="text-white w-full">
+      <div className="text-center text-4xl h-[15vh] w-full flex items-center justify-center bg-[#191b2e] rounded-md mb-5">{courseInfo.name} (Edit Course)</div>
         <div className="flex gap-8 mt-4 p-4 border-b">
             <button className={"border border-white rounded-md py-1 px-4 " + (tab===1?"bg-white font-semibold text-black":"")} onClick={()=>setTab(1)}>Videos</button>
             <button className={"border border-white rounded-md py-1 px-4 " + (tab===2?"bg-white font-semibold text-black":"")} onClick={()=>setTab(2)}>AI Test</button>
@@ -89,7 +92,7 @@ const EditCourse = () => {
                     return(
                         <div key={index} className="w-1/3 p-4">
                             <div className="bg-gray-800 p-4 rounded-lg">
-                                <video className="w-full">
+                                <video className="w-full h-60">
                                     <source src={video.videoUrl}
                                      autoPlay={false}
                                      type="video/mp4" />
@@ -134,7 +137,10 @@ const EditCourse = () => {
           </Dialog>
         </div>}
         {tab===2 && <div className="flex w-full">
-            <AITestCreation/>
+            <AITestCreation courseId={courseId}/>
+        </div>}
+        {tab===3 && <div className="flex w-full">
+            <FinalTest courseId={courseId}/>
         </div>}
     </div>
   )

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -35,6 +36,7 @@ import CreateClasroom from "./pages/CreateClassroom";
 import EditClassRoom from "./pages/EditClassRoom";
 import EnrolledClass from "./components/EnrolledClass";
 import ViewClassroom from "./pages/ViewClassroom";
+import ExploreCourses from "./pages/ExploreCourses";
 
 axios.defaults.baseURL = "http://localhost:5000/";
 
@@ -133,6 +135,8 @@ function App() {
 
             <Route path="/enrolled-classroom" element={<EnrolledClass/>}/>
             <Route path="/classroom/:id" element={<ViewClassroom/>}/>
+
+            <Route path="/explore-all-courses" element={<ExploreCourses/>}/>
           </Routes>
         </div>
       </div>
