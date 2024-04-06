@@ -32,7 +32,7 @@ const ExploreCourses = () => {
         })
         .then((res) => {
           console.log("response", res);
-          navigate("/my-courses/" + courseId);
+          navigate("/my-courses-candidates");
         })
         .catch((err) => {
           console.log(err.response);

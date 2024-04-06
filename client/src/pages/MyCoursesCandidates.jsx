@@ -45,6 +45,12 @@ const MyCoursesCandidates = () => {
                                         <h1 className="text-white text-lg font-semibold">{course.description}</h1>
                                     </div>
                                 </div>
+                                <button
+                                  className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg"
+                                  onClick={() => navigate("/my-courses/"+ course._id)}
+                                >
+                                  Go To Course
+                                </button>
                             </div>
                         )
                     })
