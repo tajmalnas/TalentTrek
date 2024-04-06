@@ -32,7 +32,7 @@ const ViewJobPosts = () => {
   }, [location]);
 
   return (
-    <div className="p-10 w-full">
+    <div className="p-5 w-full">
       <div className="flex w-full items-center justify-between mb-10 text-slate-200">
         <h1 className="text-3xl tracking-wide font-medium">Jobs Posted</h1>
 
