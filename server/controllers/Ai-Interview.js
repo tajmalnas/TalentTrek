@@ -34,7 +34,7 @@ const checkAnswer = async (req, res) => {
             });
             
             const responseContent = response.choices[0].message.content;
-            
+            console.log(responseContent)
             const marksRegex = /marks=(\d+\/\d+)/;
             let analysis = responseContent.replace(marksRegex, '').trim();
 

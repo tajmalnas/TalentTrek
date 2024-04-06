@@ -1,5 +1,16 @@
 import express from "express";
-import { addCourse,getCourse,addVideo,getMyCreatedCourses,addAIQuestions,getAIQuestions,addFinalQuestions,getFinalQuestions,getAllCourses,enrollInCourse} from "../controllers/Course.js";
+import { 
+    addCourse,
+    getCourse,
+    addVideo,
+    getMyCreatedCourses,
+    addAIQuestions,
+    getAIQuestions,
+    addFinalQuestions,
+    getFinalQuestions,
+    getAllCourses,
+    enrollInCourse
+} from "../controllers/Course.js";
 
 const router = express.Router();
 
@@ -15,6 +26,6 @@ router.post('/add-final-questions',addFinalQuestions);
 router.post('/get-final-questions',getFinalQuestions);
 
 router.get('/get-all-courses',getAllCourses);
-router.post('enroll-in-course',enrollInCourse);
+router.post('/enroll-in-course',enrollInCourse);
 
 export default router;
