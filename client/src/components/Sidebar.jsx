@@ -217,7 +217,7 @@ const Sidebar = () => {
               </div>
 
               <div className="">
-                {getRole === "recruiter" ? (
+                {getRole === "recruiter" && (
                   <Link
                     to="/top-rated-students"
                     className="flex items-center px-3 py-4 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
@@ -229,6 +229,16 @@ const Sidebar = () => {
                       Student Leaderboard
                     </span>
                   </Link>
+                )}
+                {getRole === "candidate" ? (
+                  <Link
+                    className="flex items-center px-3 py-4 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                    to="/studentFeedback"
+                  >
+                    <MessageSquareText />
+
+                    <span className="mx-2 font-medium">Feedback</span>
+                  </Link>
                 ) : (
                   <Link
                     className="flex items-center px-3 py-4 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
@@ -239,7 +249,6 @@ const Sidebar = () => {
                     <span className="mx-2 font-medium">Feedback</span>
                   </Link>
                 )}
-
                 {getRole === "creator" && (
                   <Link
                     className="flex items-center px-3 py-4 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"

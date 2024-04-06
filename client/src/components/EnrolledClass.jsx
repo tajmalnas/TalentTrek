@@ -91,10 +91,10 @@ const EnrolledClass = () => {
           </Dialog>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-6 justify-center items-center">
+      <div className="grid grid-cols-3 gap-5">
         {classrooms.length &&
           classrooms.map((classroom) => (
-            <div className="flex-col gap-4 min-h-[50vh] w-[50vh] bg-[#191b2e] rounded-xl cursor-pointer bg-opacity-100 hover:bg-opacity-90 transition duration-300 ">
+            <div className="hover:scale-105 flex-col gap-4 bg-[#191b2e] rounded-xl cursor-pointer bg-opacity-100 hover:bg-opacity-90 transition duration-300 ">
               <div className="w-full h-[50%] bg-slate-200 overflow-auto rounded-t-xl">
                 <img
                   src={classroom?.image}
@@ -110,12 +110,12 @@ const EnrolledClass = () => {
                   {classroom?.description}
                 </div>
               </div>
-              <div className="w-full h-[20%] flex justify-center py-4">
+              <div className="w-full p-4">
                 <Link
                   to={`/classroom/${classroom?._id}`}
-                  className="p-2 bg-indigo-500 hover:bg-indigo-600 h-10 w-10 rounded-full flex justify-center items-center"
+                  className="w-full flex justify-center items-center"
                 >
-                  <Button className="bg-indigo-500 hover:bg-indigo-600 tracking-wider justify-center items-center rounded-xl">
+                  <Button className="w-full bg-indigo-500 hover:bg-indigo-600 tracking-wider justify-center items-center rounded-xl">
                     View Classroom
                   </Button>
                 </Link>

@@ -159,11 +159,9 @@ function App() {
             <Route exact path="/start-page" element={<StartPage />} />
             <Route path="/ai-interview/:category" element={<AiInterview />} />
 
-            <Route path="/MCQs-test-webcam" element={<MCQsTestPage/>} />
-            <Route path="/give-class-test/:id" element={<ClassTestMCQs/>} />
-            <Route path='/feedback-form' element={<FeedbackForm/>}/>
+            <Route path="/give-class-test/:id" element={<ClassTestMCQs />} />
+            <Route path="/feedback-form" element={<FeedbackForm />} />
             <Route path="/MCQs-test-webcam" element={<MCQsTestPage />} />
-
           </Routes>
         </div>
       </div>
