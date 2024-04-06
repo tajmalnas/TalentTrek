@@ -17,18 +17,21 @@ import {
   TableHeader,
   TableRow,
 } from "../components/ui/table";
+import { Link } from "react-router-dom";
 
 const EditCourse = () => {
   const location = useLocation();
   const classRoomCode = location.pathname.split("/")[2];
   const [courseVideos, setCourseVideos] = useState([]);
   const [videoName, setVideoName] = useState("");
+  const [videoDesc, setVideoDesc] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
   const [classRoomName, setClassroomName] = useState("");
   const [classDesc, setClassDesc] = useState("");
   const [classCode, setClassCode] = useState("");
   const [students, setStudents] = useState([]);
   const [studentStatus, setStudentStatus] = useState(false);
+  
 const [questions, setQuestions] = useState({
     que1 : '',
     que2 : '',
@@ -90,6 +93,7 @@ const getQuestionsArray = () => {
         classRoomCode,
         videoTitle: videoName,
         videoUrl,
+        videoDesc,
       })
       .then((res) => {
         console.log("response", res?.data?.classRoom);
@@ -197,6 +201,15 @@ const handleCheckStatus = async (e) => {
                     />
                   </div>
                   <div>
+                    <label className="text-black">Description</label>
+                    <input
+                      type="text"
+                      value={videoDesc}
+                      onChange={(e) => setVideoDesc(e.target.value)}
+                      className="w-full p-2 bg-gray-100 border border-black rounded-lg"
+                    />
+                  </div>
+                  <div>
                     <label className="text-black">Video</label>
                     <input
                       type="file"
@@ -217,60 +230,12 @@ const handleCheckStatus = async (e) => {
             </Dialog>
           </div>
           <div className="">
-            <Dialog>
-              <DialogTrigger>
-                <div className="p-3 flex gap-2 font-medium tracking-wide text-slate-100 text-sm border border-sky-600 hover:bg-blue-500 hover:text-white hover:cursor-pointer rounded-xl">
+              <Link to={`/class-test/${classRoomCode}`}>
+              <div className="p-3 flex gap-2 font-medium tracking-wide text-slate-100 text-sm border border-sky-600 hover:bg-blue-500 hover:text-white hover:cursor-pointer rounded-xl">
                   <PlusCircle size={20} />
                   Add Questionnaire
                 </div>
-              </DialogTrigger>
-
-              <DialogContent className="">
-                <div className="flex flex-col">
-                  <div className="flex flex-col gap-3">
-                    <label className="text-black">Enter Questions</label>
-                    <input
-                      type="text"
-                      value={questions.que1}
-                      onChange={(e) => setQuestions(e.target.value)}
-                      className="w-full p-2 bg-gray-100 border border-black rounded-lg"
-                    />
-                    <input
-                      type="text"
-                      value={questions.que2}
-                      onChange={(e) => setQuestions(e.target.value)}
-                      className="w-full p-2 bg-gray-100 border border-black rounded-lg"
-                    />
-                    <input
-                      type="text"
-                      value={questions.que3}
-                      onChange={(e) => setQuestions(e.target.value)}
-                      className="w-full p-2 bg-gray-100 border border-black rounded-lg"
-                    />
-                    <input
-                      type="text"
-                      value={questions.que4}
-                      onChange={(e) => setQuestions(e.target.value)}
-                      className="w-full p-2 bg-gray-100 border border-black rounded-lg"
-                    />
-                    <input
-                      type="text"
-                      value={questions.que5}
-                      onChange={(e) => setQuestions(e.target.value)}
-                      className="w-full p-2 bg-gray-100 border border-black rounded-lg"
-                    />
-                  </div>
-                  <div className="flex">
-                    <Button
-                      className="mt-6 bg-indigo-500 hover:bg-indigo-600"
-                      onClick={submitQuestionnaire}
-                    >
-                      Add Questionnaire
-                    </Button>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
+              </Link>
           </div>
           <div className="">
           {/* <div className="p-3 flex gap-2 font-medium tracking-wide text-slate-100 text-sm border border-sky-600 hover:bg-blue-500 hover:text-white hover:cursor-pointer rounded-xl" onClick={handleCheckStatus}>
@@ -326,14 +291,17 @@ const handleCheckStatus = async (e) => {
             <TableBody className="w-full">
             {courseVideos?.map((video, index) => {
             return (
-                <TableRow key={index} className="w-full p-4 max-h-[40vh] justify-between">
-                  <TableCell className="">
-                      <div className="text-lg font-normal mt-2 text-slate-300 tracking-wider">
+                <TableRow key={index} className="w-full p-4 max-h-[40vh] flex justify-between">
+                  <TableCell className=" flex flex-col gap-3 w-[60%]">
+                      <div className="text-lg font-medium mt-2 text-slate-300 tracking-wider">
                             {video.videoTitle}
                         </div>
+                        <div className="text-lg font-normal mt-2 text-slate-500 tracking-wider text-justify">
+                            {video?.videoDescription}
+                        </div>
                       </TableCell>
-                      <TableCell className="flex justify-end">
-                      <video controls className="w-[35%] h-[85%] flex-end">
+                      <TableCell className="flex justify-end w-[35%]">
+                      <video controls className="w-full h-[85%] flex-end">
                             <source src={video.videoUrl} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>

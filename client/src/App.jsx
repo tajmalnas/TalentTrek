@@ -38,6 +38,7 @@ import EnrolledClass from "./components/EnrolledClass";
 import ViewClassroom from "./pages/ViewClassroom";
 import ExploreCourses from "./pages/ExploreCourses";
 import CreatorClassrooms from "./pages/CreatorClassrooms";
+import ClassTest from "./pages/ClassTest";
 
 axios.defaults.baseURL = "http://localhost:5000/";
 
@@ -140,6 +141,7 @@ function App() {
             <Route path="/explore-all-courses" element={<ExploreCourses/>}/>
 
             <Route path="/my-classrooms" element={<CreatorClassrooms/>}/>
+            <Route path="/class-test/:id" element={<ClassTest />} />
           </Routes>
         </div>
       </div>

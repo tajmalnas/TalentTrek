@@ -28,6 +28,9 @@ const classroomSchema = new Schema({
                 type: String,
                 required: true,
             },
+            videoDescription : {
+                type : String,
+            }
         },
     ],
     students: [
@@ -54,6 +57,26 @@ const classroomSchema = new Schema({
             type : String,
         },
     ],
+    test : [
+        {
+            question : {
+                type : String,
+                required : true,
+            },
+            options : {
+                type : [String],
+                required : true,
+            },
+            correctOption : {
+                type : String,
+                required : true,
+            },
+            selectedOption : {
+                type : String,
+                default : null,
+            }
+        }
+    ]
 },
 {
     timestamps: true,
