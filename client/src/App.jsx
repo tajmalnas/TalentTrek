@@ -35,9 +35,9 @@ import CreateClasroom from "./pages/CreateClassroom";
 import EditClassRoom from "./pages/EditClassRoom";
 import EnrolledClass from "./components/EnrolledClass";
 import ViewClassroom from "./pages/ViewClassroom";
+import StudentDashboard from "./components/Student Dashboard/StudentDashboard";
 
 axios.defaults.baseURL = "http://localhost:5000/";
-
 
 function App() {
   const location = useLocation();
@@ -97,7 +97,7 @@ function App() {
 
             <Route path="/edit-recruiter" element={<RecruiterEdit />} />
             <Route path="/edit-candidate" element={<CandidateEdit />} />
-            <Route path="/edit-creator" element={<CreatorEdit/>} />
+            <Route path="/edit-creator" element={<CreatorEdit />} />
 
             <Route path="/ai-interview/:id" element={<AiInterview />} />
 
@@ -123,16 +123,17 @@ function App() {
             <Route path="/templatepage" element={<TemplatePage />} />
             <Route path="/profile/:id" element={<ProfilePageNew />} />
             <Route path="/feedback" element={<Feedback />} />
-            
-            <Route path="/create-course" element={<CreateCourse/>}/>
-            <Route path="/edit-course/:id" element={<EditCourse/>}/>
-            <Route path="/my-created-courses" element={<MyCoursesCreator/>}/>
 
-            <Route path="/create-classroom" element={<CreateClasroom/>}/>
-            <Route path="/edit-classroom/:id" element={<EditClassRoom/>}/>
+            <Route path="/create-course" element={<CreateCourse />} />
+            <Route path="/edit-course/:id" element={<EditCourse />} />
+            <Route path="/my-created-courses" element={<MyCoursesCreator />} />
 
-            <Route path="/enrolled-classroom" element={<EnrolledClass/>}/>
-            <Route path="/classroom/:id" element={<ViewClassroom/>}/>
+            <Route path="/create-classroom" element={<CreateClasroom />} />
+            <Route path="/edit-classroom/:id" element={<EditClassRoom />} />
+
+            <Route path="/enrolled-classroom" element={<EnrolledClass />} />
+            <Route path="/classroom/:id" element={<ViewClassroom />} />
+            <Route path="/student-dashboard" element={<StudentDashboard />} />
           </Routes>
         </div>
       </div>
