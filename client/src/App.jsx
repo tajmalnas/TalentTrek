@@ -46,6 +46,7 @@ import MyCourseStudentOneCourse from "./pages/MyCourseStudentOneCourse";
 import StudentDashboard from "./components/Student Dashboard/StudentDashboard";
 import TopRatedStudents from "./components/Top Rated Students/TopRatedStudents";
 import ClassTest from "./pages/ClassTest";
+import MyCoursesCandidates from "./pages/MyCoursesCandidates";
 
 axios.defaults.baseURL = "http://localhost:5000/";
 
@@ -153,6 +154,7 @@ function App() {
               path="/my-courses/:id"
               element={<MyCourseStudentOneCourse />}
             />
+            <Route path="/my-courses-candidates" element={<MyCoursesCandidates/>}/>
             <Route path="/class-test/:id" element={<ClassTest />} />
             <Route exact path="/start-page" element={<StartPage />} />
             <Route path="/ai-interview/:category" element={<AiInterview />} />

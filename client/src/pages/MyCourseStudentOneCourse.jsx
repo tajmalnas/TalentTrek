@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
+import MCQsTestPage from "./MCQS-test-videocam/MCQ2";
 
 const MyCourseStudentOneCourse = () => {
 
@@ -56,21 +57,8 @@ const MyCourseStudentOneCourse = () => {
             }
           </div>
       }
+      {tab===3 && <MCQsTestPage courseData = {courseData}/>}
       {tab===2 && <div className="flex w-full">
-            {
-                courseData?.aiTest?.map((question,index) => {
-                    return(
-                        <div key={index} className="w-1/3 p-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
-                                <div className="text-lg font-medium mt-2">{question.question}</div>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-          </div>
-      }
-      {tab===3 && <div className="flex w-full">
             {
                 courseData?.test?.map((question,index) => {
                     return(
