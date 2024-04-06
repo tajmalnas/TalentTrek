@@ -253,6 +253,15 @@ const Sidebar = () => {
                   </Link>
                 )}
               </div>
+              {getRole=="candidate" && <div>
+                <Link
+                  to={"/explore-all-courses"}
+                  className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                >
+                <Bot/>
+                Explore Courses
+                </Link>
+              </div>}
               <div className="space-y-3 ">
                 <label className="px-3 text-xs text-gray-500 uppercase dark:text-gray-400">
                   Authentication
