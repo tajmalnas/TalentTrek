@@ -36,6 +36,7 @@ import EditClassRoom from "./pages/EditClassRoom";
 import EnrolledClass from "./components/EnrolledClass";
 import ViewClassroom from "./pages/ViewClassroom";
 import StudentDashboard from "./components/Student Dashboard/StudentDashboard";
+import TopRatedStudents from "./components/Top Rated Students/TopRatedStudents";
 
 axios.defaults.baseURL = "http://localhost:5000/";
 
@@ -99,9 +100,9 @@ function App() {
             <Route path="/edit-candidate" element={<CandidateEdit />} />
             <Route path="/edit-creator" element={<CreatorEdit />} />
 
-            <Route path="/ai-interview/:id" element={<AiInterview />} />
+            {/* <Route path="/ai-interview/:id" element={<AiInterview />} /> */}
 
-            <Route path="/meeting/:roomId" element={<Meeting />} />
+            {/* <Route path="/meeting/:roomId" element={<Meeting />} /> */}
             <Route path="/code-editor" element={<Landing />} />
             <Route path="/interview-slot" element={<InterviewSlotsTable />} />
             <Route
@@ -112,7 +113,7 @@ function App() {
             <Route path="/success" element={<Landingpage />} />
             <Route path="/cancel" element={<Landingpage />} />
 
-            <Route path="/exploreAllJobs" element={<ExploreAllJobs />} />
+            {/* <Route path="/exploreAllJobs" element={<ExploreAllJobs />} /> */}
             <Route path="/profile-page" element={<ProfilePage />} />
 
             <Route path="/my-applied-jobs" element={<MyAppliedJobs />} />
@@ -120,7 +121,7 @@ function App() {
               path="/job/applicants/:id"
               element={<AppliedCandidatedOnPost />}
             />
-            <Route path="/templatepage" element={<TemplatePage />} />
+            {/* <Route path="/templatepage" element={<TemplatePage />} /> */}
             <Route path="/profile/:id" element={<ProfilePageNew />} />
             <Route path="/feedback" element={<Feedback />} />
 
@@ -134,6 +135,7 @@ function App() {
             <Route path="/enrolled-classroom" element={<EnrolledClass />} />
             <Route path="/classroom/:id" element={<ViewClassroom />} />
             <Route path="/student-dashboard" element={<StudentDashboard />} />
+            <Route path="/top-rated-students" element={<TopRatedStudents />} />
           </Routes>
         </div>
       </div>

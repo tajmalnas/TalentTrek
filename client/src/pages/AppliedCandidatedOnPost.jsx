@@ -16,15 +16,14 @@ const AppliedCandidatedOnPost = () => {
   const location = useLocation();
   const [appliedCandidates, setAppliedCandidates] = useState([]);
 
-
   const takeMeeting = async (candidate) => {
-    await axios.post("/send-emails/interview",{
+    await axios.post("/send-emails/interview", {
       candidateEmail: candidate?.email,
       candidateId: candidate?._id,
-      token:localStorage.getItem("token")
-    })
-    navigate(`/meeting/${candidate?.candidate?._id}`)
-  }
+      token: localStorage.getItem("token"),
+    });
+    navigate(`/meeting/${candidate?.candidate?._id}`);
+  };
 
   const fetchData = async () => {
     const postId = location.pathname.split("/")[3];
@@ -81,7 +80,7 @@ const AppliedCandidatedOnPost = () => {
                   <TableCell>
                     <button
                       className="bg-sky-600  text-slate-200 p-2 rounded-md"
-                      onClick={() =>takeMeeting(candidate?.candidate)}
+                      onClick={() => takeMeeting(candidate?.candidate)}
                     >
                       Take Interview
                     </button>
