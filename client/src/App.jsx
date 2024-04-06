@@ -46,6 +46,8 @@ import MyCourseStudentOneCourse from "./pages/MyCourseStudentOneCourse";
 import StudentDashboard from "./components/Student Dashboard/StudentDashboard";
 import TopRatedStudents from "./components/Top Rated Students/TopRatedStudents";
 import ClassTest from "./pages/ClassTest";
+import ClassTestMCQs from "./pages/ClassTestMCQs";
+import FeedbackForm from "./components/feedback-form/FeedbackForm";
 
 axios.defaults.baseURL = "http://localhost:5000/";
 
@@ -158,7 +160,8 @@ function App() {
             <Route path="/ai-interview/:category" element={<AiInterview />} />
 
             <Route path="/MCQs-test-webcam" element={<MCQsTestPage/>} />
-
+            <Route path="/give-class-test/:id" element={<ClassTestMCQs/>} />
+            <Route path='/feedback-form' element={<FeedbackForm/>}/>
           </Routes>
         </div>
       </div>
