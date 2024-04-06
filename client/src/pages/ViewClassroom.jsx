@@ -1,6 +1,16 @@
 import React, { useEffect , useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+  } from "../components/ui/table";
+import { Button } from '@/components/ui/button';
 
 const ViewClassroom = () => {
     const location = useLocation();
@@ -46,22 +56,30 @@ const ViewClassroom = () => {
           <div className="text-lg font-medium text-slate-500">{classroom?.description}</div>
         </div>
         </div>
-        <div className="w-full flex">
-        {classVideos?.map((video, index) => {
+        <div className="w-full flex-col">
+        <Table className="w-full">
+            <TableBody className="w-full">
+            {classVideos?.map((video, index) => {
             return (
-                <div key={index} className="w-1/3 p-4 ">
-                    <div className="bg-gray-800 p-4 rounded-lg">
-                        <video controls className="w-full">
+                <TableRow key={index} className="w-full p-4 max-h-[40vh] justify-between">
+                  <TableCell className="">
+                      <div className="text-lg font-normal mt-2 text-slate-300 tracking-wider">
+                            {video.videoTitle}
+                        </div>
+                      </TableCell>
+                      <TableCell className="flex justify-end">
+                      <video controls className="w-[35%] h-[85%] flex-end">
                             <source src={video.videoUrl} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
-                        <div className="text-lg font-medium mt-2">
-                            {video.videoTitle}
-                        </div>
-                    </div>
-                </div>
+                      </TableCell>
+                      
+                </TableRow>
             );
           })}
+            </TableBody>
+          </Table>
+          <Button className="mt-10 ml-4 mb-10 h-[8vh] w-[30vh] text-lg bg-blue-700 tracking-wider ">Attempt Final Test</Button>
     </div>
     </div>
   )

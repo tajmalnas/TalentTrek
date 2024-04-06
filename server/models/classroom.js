@@ -49,6 +49,11 @@ const classroomSchema = new Schema({
         type: String,
         required: true,
     },
+    feedbacks: [
+        {
+            type : String,
+        },
+    ],
 },
 {
     timestamps: true,

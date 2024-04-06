@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PlusCircle , X, Check} from "lucide-react";
+import { PlusCircle , X, Check, Eye} from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Dialog, DialogContent, DialogTrigger } from "../components/ui/dialog";
@@ -280,6 +280,7 @@ const handleCheckStatus = async (e) => {
           <Dialog>
               <DialogTrigger>
                 <div className="p-3 flex gap-2 font-medium tracking-wide text-slate-100 text-sm border border-sky-600 hover:bg-blue-500 hover:text-white hover:cursor-pointer rounded-xl">
+                <Eye className="h-[20px] "/>
                   View Student Status
                 </div>
               </DialogTrigger>
@@ -294,6 +295,7 @@ const handleCheckStatus = async (e) => {
                       <TableHead>Name</TableHead>
                       <TableHead className="text-center">Email</TableHead>
                       <TableHead>Course Status</TableHead>
+                      <TableHead>Feedback</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -304,6 +306,9 @@ const handleCheckStatus = async (e) => {
                               <TableCell>{student.username}</TableCell>
                               <TableCell>{student.email}</TableCell>
                               <TableCell className="flex items-center justify-center ">{studentStatus ? <Check stroke="green"/> : <X stroke="red"/>}</TableCell>
+                              {
+                                  student.feedback ? <TableCell>{student.feedback}</TableCell> : <TableCell>No feedback given</TableCell>
+                              }
                             </TableRow>
                           );
                         })
@@ -328,7 +333,7 @@ const handleCheckStatus = async (e) => {
                         </div>
                       </TableCell>
                       <TableCell className="flex justify-end">
-                      <video controls className="w-[35%] h-[80%] flex-end">
+                      <video controls className="w-[35%] h-[85%] flex-end">
                             <source src={video.videoUrl} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>

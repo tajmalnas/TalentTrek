@@ -131,6 +131,24 @@ export const getCreatorClassrooms = async (req, res) => {
 
 export const getEnrolledStudents = async (req, res) => {
     const {classRoomCode} = req.body;
-    const classroom = await ClassroomModel.findById(classRoomCode).populate('students');
-    res.status(200).json({students:classroom.students});
+    const classroom = await ClassroomModel
+        .findById(classRoomCode)
+        .populate('students');
+    if (!classroom) {
+        return res.status(400).json({msg: 'Classroom not found'});
+    }
+    const students = classroom.students;
+    return res.json({students});
+}
+
+
+export const giveFeedback = async (req, res) => {
+    const { classRoomCode, feedback } = req.body;
+    const classroom = await ClassroomModel.findById(classRoomCode);
+    if (!classroom) {
+        return res.status(400).json({ msg: 'Classroom not found' });
+    }
+    classroom.feedbacks.push(feedback);
+    await classroom.save();
+    return res.json({ msg: 'Feedback added successfully', classroom: classroom });
 }
