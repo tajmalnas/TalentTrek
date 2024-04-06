@@ -302,16 +302,31 @@ const Sidebar = () => {
                 )} */}
               </div>
               {getRole == "candidate" && (
-                <Link
-                  to={"/student-dashboard"}
-                  className="flex items-center px-3 py-4 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                  href="#"
-                >
-                  <LayoutDashboard />
-                  <span className="mx-2 font-medium">Dashboard</span>
-                </Link>
+                <div>
+                  <Link
+                    to={"/student-dashboard"}
+                    className="flex items-center px-3 py-4 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                    href="#"
+                  >
+                    <LayoutDashboard />
+                    <span className="mx-2 font-medium">Dashboard</span>
+                  </Link>
+                </div>
               )}
-              <div className=" ">
+              {/* {getRole=="candidate" && <div>
+                <Link
+                  to={"/my-courses-candidates"}
+                  className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                >
+                <Bot/>
+                  My Courses
+                </Link>
+              </div>} */}
+              <div className="space-y-3 ">
+                <label className="px-3 text-xs text-gray-500 uppercase dark:text-gray-400">
+                  Authentication
+                </label>
+
                 {/* Profile and Logout links */}
                 {auth === true && (
                   <Link

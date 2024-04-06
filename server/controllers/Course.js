@@ -216,6 +216,32 @@ const enrollInCourse = async (req, res) => {
     }
 }
 
+const myCourseCandidates = async (req, res) => {
+    const {token} = req.body;
+    if (!token) {
+        return res.status(400).json({ msg: 'All fields are required' });
+    }
+    try{
+        const userId = jwt.verify(token, process.env.JWT_SECRET).id;
+        const courses = [];
+        const candidate = await Candidate.findById(userId);
+        if (!candidate) {
+            return res.status(400).json({msg: 'User not found'});
+        }
+        for (let i = 0; i < candidate.coursesEnrolled.length; i++) {
+            const course = await Course.findById(candidate.coursesEnrolled[i]);
+            courses.push(course);
+        }
+        if (!courses) {
+            return res.status(400).json({msg: 'Course not found'});
+        }
+        return res.json(courses);
+    }
+    catch(err){
+        return res.status(500).json({msg: err.message});
+    }   
+}
+
 export { 
     addCourse,
     getCourse,
@@ -226,5 +252,6 @@ export {
     addFinalQuestions,
     getFinalQuestions,
     getAllCourses,
-    enrollInCourse
+    enrollInCourse,
+    myCourseCandidates
 };

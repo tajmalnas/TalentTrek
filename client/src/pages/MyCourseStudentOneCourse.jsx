@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { useLocation } from "react-router-dom"
+import MCQsTestPage from "./MCQS-test-videocam/MCQ2";
 
 const MyCourseStudentOneCourse = () => {
   const [courseData, setCourseData] = useState({});
@@ -64,68 +65,45 @@ const MyCourseStudentOneCourse = () => {
           Final Test
         </button>
       </div>
-      {tab === 1 && (
-        <div className="flex w-full">
-          {courseData?.videos?.map((video, index) => {
-            return (
-              <div key={index} className="w-1/3 mt-5">
-                <div className="bg-gray-800 p-4 rounded-xl">
-                  <video className="w-full h-60">
-                    <source
-                      src={video.videoUrl}
-                      autoPlay={false}
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                  <div className="text-lg font-medium mt-4 text-center">
-                    {video.videoTitle}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-      {tab === 2 && (
-        <div className="flex flex-wrap gap-6 w-full mt-5">
-          {courseData?.aiTest?.map((question, index) => {
-            return (
-              <div
-                key={index}
-                className="bg-gray-800 p-4 rounded-xl text-lg font-medium"
-              >
-                {question.question}
-              </div>
-            );
-          })}
-        </div>
-      )}
-      {tab === 3 && (
-        <div className="flex w-full mt-5 flex-wrap gap-6">
-          {courseData?.test?.map((question, index) => {
-            return (
-              <div key={index} className="bg-gray-800 p-4 rounded-lg">
-                <div className="text-lg font-medium mt-2">
-                  {question.question}
-                </div>
-                <div className="text-lg font-medium mt-2">
-                  {question.options[0]}
-                </div>
-                <div className="text-lg font-medium mt-2">
-                  {question.options[1]}
-                </div>
-                <div className="text-lg font-medium mt-2">
-                  {question.options[2]}
-                </div>
-                <div className="text-lg font-medium mt-2">
-                  {question.options[3]}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      {tab===1 && <div className="flex w-full">
+            {
+                courseData?.videos?.map((video,index) => {
+                    return(
+                        <div key={index} className="w-1/3 p-4">
+                            <div className="bg-gray-800 p-4 rounded-lg">
+                                <video className="w-full h-60">
+                                    <source src={video.videoUrl}
+                                     autoPlay={false}
+                                     type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div className="text-lg font-medium mt-2">{video.videoTitle}</div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+          </div>
+      }
+      {tab===3 && <MCQsTestPage courseData = {courseData}/>}
+      {tab===2 && <div className="flex w-full">
+            {
+                courseData?.test?.map((question,index) => {
+                    return(
+                        <div key={index} className="w-1/3 p-4">
+                            <div className="bg-gray-800 p-4 rounded-lg">
+                                <div className="text-lg font-medium mt-2">{question.question}</div>
+                                <div className="text-lg font-medium mt-2">{question.options[0]}</div>
+                                <div className="text-lg font-medium mt-2">{question.options[1]}</div>
+                                <div className="text-lg font-medium mt-2">{question.options[2]}</div>
+                                <div className="text-lg font-medium mt-2">{question.options[3]}</div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+          </div>
+      }
     </div>
   );
 };
