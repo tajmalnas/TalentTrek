@@ -60,6 +60,18 @@ const candidateSchema = new Schema(
         ref: "projectModel",
       },
     ],
+    classroomEnrolled: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "ClassroomModel",
+      },
+    ],
+    coursesEnrolled: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "CourseModel",
+      },
+    ],
   },
   {
     timestamps: true,

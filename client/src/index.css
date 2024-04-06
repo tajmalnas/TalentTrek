@@ -65,7 +65,28 @@
     --ring: 212.7 26.8% 83.9%;
   }
 }
- 
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(12, 1, 97);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 46);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 46);
+}
+
+
 @layer base {
   * {
     @apply border-border;

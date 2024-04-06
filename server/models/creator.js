@@ -66,7 +66,7 @@ const creatorSchema = new Schema(
                 ref: "courseModel",
             },
         ],
-        classroomJoined:[
+        classroomCreated:[
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "classroomModel",

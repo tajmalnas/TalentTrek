@@ -118,7 +118,7 @@ const Sidebar = () => {
           <div className="flex flex-col justify-between flex-1 mt-6">
             <nav className="-mx-3 space-y-6 ">
               <div className="space-y-3 ">
-                {getRole==="creator"?(
+                {getRole === "creator" ? (
                   <Link
                     to={"/create-course"}
                     className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
@@ -128,7 +128,7 @@ const Sidebar = () => {
 
                     <span className="mx-2 font-medium">Create Course</span>
                   </Link>
-                ):getRole === "recruiter" ? (
+                ) : getRole === "recruiter" ? (
                   <Link
                     to={"/createJob"}
                     className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
@@ -148,7 +148,7 @@ const Sidebar = () => {
                     <span className="mx-2 font-medium">Explore Jobs</span>
                   </Link>
                 )}
-                {getRole==="creator"?(
+                {getRole === "creator" ? (
                   <div>
                     <Link
                       to={"/"}
@@ -160,18 +160,17 @@ const Sidebar = () => {
                       <span className="mx-2 font-medium">Create ClassRoom</span>
                     </Link>
                     <Link
-                      to={"/"}
+                      to={"/create-classroom"}
                       className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                      href="#"
+                      href="/create-classroom"
                     >
                       <Dock />
-
                       <span className="mx-2 font-medium">Create ClassRoom</span>
                   </Link>
                   </div>
                   
                   
-                ):getRole === "recruiter" ? (
+                ) : getRole === "recruiter" ? (
                   <Link
                     to={"/viewJobPosts"}
                     className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
@@ -184,12 +183,12 @@ const Sidebar = () => {
                 ) : (
                   <div>
                     <Link
-                      to={"/my-applied-jobs"}
+                      to={"/enrolled-classroom"}
                       className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                       href="#"
                     >
                       <Dock />
-                      <span className="mx-2 font-medium">My Applications</span>
+                      <span className="mx-2 font-medium">Enrolled Classes</span>
                     </Link>
                     <Link
                       className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
@@ -230,16 +229,39 @@ const Sidebar = () => {
                   </Link>
                 )}
 
+                {getRole === "creator" ? (
+                  <Link
+                    className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                    to={"my-created-courses"}
+                  >
+                    <Bot />
+
+                    <span className="mx-2 font-medium">Uploaded Courses</span>
+                  </Link>
+                ) : (
+                  <Link
+                    className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                    to={"/ai-interview/12345"}
+                  >
+                    <Bot />
+
+                    <span className="mx-2 font-medium">AI Interview</span>
+                  </Link>
+                )}
               </div>
 
               <div className="space-y-3 ">
-                <Link
-                  to={"/code-editor"}
+                {
+                  getRole === 'creator' && (
+                    <Link
+                  to={"/my-classrooms"}
                   className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                 >
                   <Code />
-                  <span className="mx-2 font-medium">Code Editor</span>
+                  <span className="mx-2 font-medium">Classrooms</span>
                 </Link>
+                  )
+                }
 
                 {getRole === "recruiter" ? (
                   <Link
@@ -261,6 +283,15 @@ const Sidebar = () => {
                   </Link>
                 )}
               </div>
+              {getRole=="candidate" && <div>
+                <Link
+                  to={"/explore-all-courses"}
+                  className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                >
+                <Bot/>
+                Explore Courses
+                </Link>
+              </div>}
               <div className="space-y-3 ">
                 <label className="px-3 text-xs text-gray-500 uppercase dark:text-gray-400">
                   Authentication

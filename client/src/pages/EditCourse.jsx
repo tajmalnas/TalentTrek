@@ -7,14 +7,18 @@ import { Button } from "@/components/ui/button";
 import { imageDb } from "@/firebase/firebaseConfig";
 import { v4 } from "uuid";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import AITestCreation from "./AITestCreation";
+import FinalTest from "./FinalTest";
 
 const EditCourse = () => {
     const location = useLocation();
     console.log(location);
     const courseId = location.pathname.split("/")[2];
+    const [courseInfo,setCourseInfo] = useState({})
     const [courseVideos, setCourseVideos] = useState([]);
     const [videoName, setVideoName] = useState('')
     const [videoUrl, setVideoUrl] = useState('')
+    const [tab, setTab] = useState(1);
 
     const fetchContent = async () => {
         try{
@@ -23,6 +27,7 @@ const EditCourse = () => {
             }).then((res) => {
                 console.log("response",res)
                 setCourseVideos(res.data.videos);
+                setCourseInfo(res.data);
                 console.log("courseVideos",courseVideos)
             }).catch((err) => {
                 console.log(err.response);
@@ -74,16 +79,23 @@ const EditCourse = () => {
     },[])
 
   return (
-    <div className="text-white">
-        <div className="text-center text-4xl">Edit Course</div>
-        <div className="flex w-full">
+    <div className="text-white w-full">
+      <div className="text-center text-4xl h-[15vh] w-full flex items-center justify-center bg-[#191b2e] rounded-md mb-5">{courseInfo.name} (Edit Course)</div>
+        <div className="flex gap-8 mt-4 p-4 border-b">
+            <button className={"border border-white rounded-md py-1 px-4 " + (tab===1?"bg-white font-semibold text-black":"")} onClick={()=>setTab(1)}>Videos</button>
+            <button className={"border border-white rounded-md py-1 px-4 " + (tab===2?"bg-white font-semibold text-black":"")} onClick={()=>setTab(2)}>AI Test</button>
+            <button className={"border border-white rounded-md py-1 px-4 " + (tab===3?"bg-white font-semibold text-black":"")} onClick={()=>setTab(3)}>Final Test</button>
+        </div>
+        {tab===1 && <div className="flex w-full">
             {
                 courseVideos.map((video,index) => {
                     return(
                         <div key={index} className="w-1/3 p-4">
                             <div className="bg-gray-800 p-4 rounded-lg">
-                                <video controls className="w-full">
-                                    <source src={video.videoUrl} type="video/mp4" />
+                                <video className="w-full h-60">
+                                    <source src={video.videoUrl}
+                                     autoPlay={false}
+                                     type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
                                 <div className="text-lg font-medium mt-2">{video.videoTitle}</div>
@@ -123,7 +135,13 @@ const EditCourse = () => {
               </div>
             </DialogContent>
           </Dialog>
-        </div>
+        </div>}
+        {tab===2 && <div className="flex w-full">
+            <AITestCreation courseId={courseId}/>
+        </div>}
+        {tab===3 && <div className="flex w-full">
+            <FinalTest courseId={courseId}/>
+        </div>}
     </div>
   )
 }

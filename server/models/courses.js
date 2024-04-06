@@ -36,6 +36,44 @@ const courseSchema = new Schema({
                 type: String,
                 required: true,
             },
+            isCompleted:{
+                type: Boolean,
+                default: false,
+            }
+        }
+    ],
+    aiTest:[
+        {
+            question:{
+                type: String,
+                required: true,
+            }
+        }
+    ],
+    test:[
+        {
+            question:{
+                type: String,
+                required: true,
+            },
+            options:{
+                type: [String],
+                required: true,
+            },
+            correctOption:{
+                type: String,
+                required: true,
+            },
+            selectedOption:{
+                type: String,
+                default: null,
+            }
+        }
+    ],
+    studentsEnrolled:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Candidate",
         }
     ],
 },{

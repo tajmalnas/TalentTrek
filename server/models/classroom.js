@@ -28,28 +28,55 @@ const classroomSchema = new Schema({
                 type: String,
                 required: true,
             },
+            videoDescription : {
+                type : String,
+            }
         },
     ],
     students: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "studentModel",
+            ref: "Candidate",
         },
     ],
     creator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "creatorModel",
     },
-    course: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "courseModel",
-    },
-    classroomJoined: [
+    questions: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "classroomModel",
+            type : String,
+        }
+    ],
+    classRoomCode : {
+        type: String,
+        required: true,
+    },
+    feedbacks: [
+        {
+            type : String,
         },
     ],
+    test : [
+        {
+            question : {
+                type : String,
+                required : true,
+            },
+            options : {
+                type : [String],
+                required : true,
+            },
+            correctOption : {
+                type : String,
+                required : true,
+            },
+            selectedOption : {
+                type : String,
+                default : null,
+            }
+        }
+    ]
 },
 {
     timestamps: true,

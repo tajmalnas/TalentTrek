@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -34,10 +35,19 @@ import AiInterview from "./pages/InterviewPrep/AiInterview";
 import StartPage from "./pages/InterviewPrep/StartPage";
 import MCQsTestPage from "./pages/MCQS-test-videocam/MCQs";
 
-// axios.defaults.baseURL = "https://hiretainity.onrender.com/";
+import MyCoursesCreator from "./pages/MyCoursesCreator";
+import CreateClasroom from "./pages/CreateClassroom";
+import EditClassRoom from "./pages/EditClassRoom";
+import EnrolledClass from "./components/EnrolledClass";
+import ViewClassroom from "./pages/ViewClassroom";
+import ExploreCourses from "./pages/ExploreCourses";
+import CreatorClassrooms from "./pages/CreatorClassrooms";
+import MyCourseStudentOneCourse from "./pages/MyCourseStudentOneCourse";
+import StudentDashboard from "./components/Student Dashboard/StudentDashboard";
+import TopRatedStudents from "./components/Top Rated Students/TopRatedStudents";
+import ClassTest from "./pages/ClassTest";
 
 axios.defaults.baseURL = "http://localhost:5000/";
-
 
 function App() {
   const location = useLocation();
@@ -97,11 +107,11 @@ function App() {
 
             <Route path="/edit-recruiter" element={<RecruiterEdit />} />
             <Route path="/edit-candidate" element={<CandidateEdit />} />
-            <Route path="/edit-creator" element={<CreatorEdit/>} />
+            <Route path="/edit-creator" element={<CreatorEdit />} />
 
             {/* <Route path="/ai-interview/:id" element={<AiInterview />} /> */}
 
-            <Route path="/meeting/:roomId" element={<Meeting />} />
+            {/* <Route path="/meeting/:roomId" element={<Meeting />} /> */}
             <Route path="/code-editor" element={<Landing />} />
             <Route path="/interview-slot" element={<InterviewSlotsTable />} />
             <Route
@@ -112,7 +122,7 @@ function App() {
             <Route path="/success" element={<Landingpage />} />
             <Route path="/cancel" element={<Landingpage />} />
 
-            <Route path="/exploreAllJobs" element={<ExploreAllJobs />} />
+            {/* <Route path="/exploreAllJobs" element={<ExploreAllJobs />} /> */}
             <Route path="/profile-page" element={<ProfilePage />} />
 
             <Route path="/my-applied-jobs" element={<MyAppliedJobs />} />
@@ -120,13 +130,30 @@ function App() {
               path="/job/applicants/:id"
               element={<AppliedCandidatedOnPost />}
             />
-            <Route path="/templatepage" element={<TemplatePage />} />
+            {/* <Route path="/templatepage" element={<TemplatePage />} /> */}
             <Route path="/profile/:id" element={<ProfilePageNew />} />
             <Route path="/feedback" element={<Feedback />} />
-            
-            <Route path="/create-course" element={<CreateCourse/>}/>
-            <Route path="/edit-course/:id" element={<EditCourse/>}/>
 
+            <Route path="/create-course" element={<CreateCourse />} />
+            <Route path="/edit-course/:id" element={<EditCourse />} />
+            <Route path="/my-created-courses" element={<MyCoursesCreator />} />
+
+            <Route path="/create-classroom" element={<CreateClasroom />} />
+            <Route path="/edit-classroom/:id" element={<EditClassRoom />} />
+
+            <Route path="/enrolled-classroom" element={<EnrolledClass />} />
+            <Route path="/classroom/:id" element={<ViewClassroom />} />
+            <Route path="/student-dashboard" element={<StudentDashboard />} />
+            <Route path="/top-rated-students" element={<TopRatedStudents />} />
+
+            <Route path="/explore-all-courses" element={<ExploreCourses />} />
+
+            <Route path="/my-classrooms" element={<CreatorClassrooms />} />
+            <Route
+              path="/my-courses/:id"
+              element={<MyCourseStudentOneCourse />}
+            />
+            <Route path="/class-test/:id" element={<ClassTest />} />
             <Route exact path="/start-page" element={<StartPage />} />
             <Route path="/ai-interview/:category" element={<AiInterview />} />
 
