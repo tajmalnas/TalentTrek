@@ -1,10 +1,12 @@
 /* eslint-disable react/no-unknown-property */
 import { useEffect,useState } from "react"
 import { IndianRupee } from 'lucide-react'
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 const ExploreCourses = () => {
     
     const [courses, setCourses] = useState([])
+    const navigate = useNavigate();
 
     const fetchALlCourses = async() => {
         try{
@@ -26,6 +28,7 @@ const ExploreCourses = () => {
                 token:localStorage.getItem('token')
             }).then((res) => {
                 console.log("response",res)
+                navigate('/my-courses/' + courseId)
             }).catch((err) => {
                 console.log(err.response);
             });
