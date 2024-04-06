@@ -89,7 +89,7 @@ const Sidebar = () => {
                     color: "transparent",
                   }}
                 >
-                  Hiretainity
+                  TalentTrek
                 </p>
               </div>
             </a>
@@ -149,15 +149,28 @@ const Sidebar = () => {
                   </Link>
                 )}
                 {getRole==="creator"?(
-                  <Link
-                    to={"/"}
-                    className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                    href="#"
-                  >
-                    <Dock />
+                  <div>
+                    <Link
+                      to={"/"}
+                      className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                      href="#"
+                    >
+                      <Dock />
 
-                    <span className="mx-2 font-medium">Create ClassRoom</span>
+                      <span className="mx-2 font-medium">Create ClassRoom</span>
+                    </Link>
+                    <Link
+                      to={"/"}
+                      className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                      href="#"
+                    >
+                      <Dock />
+
+                      <span className="mx-2 font-medium">Create ClassRoom</span>
                   </Link>
+                  </div>
+                  
+                  
                 ):getRole === "recruiter" ? (
                   <Link
                     to={"/viewJobPosts"}
@@ -169,14 +182,30 @@ const Sidebar = () => {
                     <span className="mx-2 font-medium">Job Posted</span>
                   </Link>
                 ) : (
-                  <Link
-                    to={"/my-applied-jobs"}
-                    className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                    href="#"
-                  >
-                    <Dock />
-                    <span className="mx-2 font-medium">My Applications</span>
-                  </Link>
+                  <div>
+                    <Link
+                      to={"/my-applied-jobs"}
+                      className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                      href="#"
+                    >
+                      <Dock />
+                      <span className="mx-2 font-medium">My Applications</span>
+                    </Link>
+                    <Link
+                      className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                      to={"/start-page"}
+                    >
+                      <Bot />
+
+                      <span className="mx-2 font-medium">AI Interview Prep</span>
+                    </Link>
+                    <Link to={'/MCQs-test-webcam'}
+                      className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                      
+                    >
+                      <span className="mx-2 font-medium">MCQs test</span>
+                    </Link>
+                  </div>
                 )}
               </div>
 
@@ -201,14 +230,6 @@ const Sidebar = () => {
                   </Link>
                 )}
 
-                <Link
-                  className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                  to={"/ai-interview/12345"}
-                >
-                  <Bot />
-
-                  <span className="mx-2 font-medium">AI Interview</span>
-                </Link>
               </div>
 
               <div className="space-y-3 ">

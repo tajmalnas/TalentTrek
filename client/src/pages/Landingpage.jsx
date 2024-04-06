@@ -27,10 +27,10 @@ export const Landingpage = () => {
             <div className="flex flex-col justify-center items-center">
                 <div className="max-w-lg">
                     <div className="text-center text-5xl font-medium tracking-tight text-transparent md:text-5xl  max-w-2xl mb-0">
-                        <span className="text-white leading-normal">Unleash the Potential </span><span className="text-white py-4 bg-clip-text">of Our Advanced Tools</span>
+                        <span className="text-white leading-normal">Supercharge Your Learning </span><span className="text-white py-4 bg-clip-text">with Our Tools</span>
                     </div>
                     <div className="flex justify-center items-center flex-col">
-                        <p className="text-slate-300 mt-8 text-2xl text-center">Modernize Your Hiring with Automated Email Outreach, Intelligent Candidate Selection, and Smooth Interview Coordination</p>
+                        <p className="text-slate-300 mt-8 text-2xl text-center">Revolutionize Your Learning Journey with Automated Progress Tracking, Intelligent Content Selection, and Interview Preparation.</p>
                     </div>
                 </div>
             </div>
@@ -48,21 +48,18 @@ export const Landingpage = () => {
                         }}
                         className="w-full bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center tracking-tight text-transparent"
                     >
-                        {/* <div className="bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-5xl font-medium tracking-tight text-transparent md:text-7xl">
-                            Build lamps <br /> the right way
-                        </div> */}
                         <div className="flex gap-6 justify-center m-0 p-0">
                             <div className="block max-w-sm p-6 bg-white/0 flex flex-col justify-center border border-gray-200 rounded-lg shadow dark:border-gray-700 backdrop-blur-xl">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">AI-Generated Interviews</h5>
-                                <p className="font-normal text-gray-700 dark:text-gray-400">Provide a diverse set of questions based on the candidate's skillset and experience.</p>
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">AI-generated Interview Practice</h5>
+                                <p className="font-normal text-gray-700 dark:text-gray-400">Practice interviews on diverse set of questions based on the learner's skillset and experience.</p>
                             </div>
                             <div className="block max-w-sm p-6 bg-white/0 flex flex-col justify-center border border-gray-200 rounded-lg shadow dark:border-gray-700 backdrop-blur-xl">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Inbuilt Compiler for Interviews</h5>
-                                <p className="font-normal text-gray-700 dark:text-gray-400">Offer a real-time coding environment with syntax highlighting, auto-completion, and debugging features.</p>
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Inbuilt Compiler for learner's practice</h5>
+                                <p className="font-normal text-gray-700 dark:text-gray-400">Offer a real-time coding environment with syntax highlighting, and debugging features.</p>
                             </div>
                             <div className="block max-w-sm p-6 bg-white/0 flex flex-col justify-center border border-gray-200 rounded-lg shadow dark:border-gray-700 backdrop-blur-xl">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Smart Scheduling of Interviews</h5>
-                                <p className="font-normal text-gray-700 dark:text-gray-400">Enable recruiters to upload candidate data via Excel files for quick interview scheduling.</p>
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Smart Certification Exams</h5>
+                                <p className="font-normal text-gray-700 dark:text-gray-400">Offer Cheat-Proof Measures, Including Tab change Prohibition and Video Surveillance.</p>
                             </div>
                         </div>
                     </motion.h1>
