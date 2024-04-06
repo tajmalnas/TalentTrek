@@ -60,4 +60,4 @@ const checkAnswer = async (req, res) => {
     }
 };
 
-export { checkAnswer };
+export { checkAnswer};

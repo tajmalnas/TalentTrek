@@ -47,18 +47,6 @@ const courseSchema = new Schema({
             question:{
                 type: String,
                 required: true,
-            },
-            options:{
-                type: [String],
-                required: true,
-            },
-            correctOption:{
-                type: String,
-                required: true,
-            },
-            selectedOption:{
-                type: String,
-                default: null,
             }
         }
     ],
@@ -80,6 +68,12 @@ const courseSchema = new Schema({
                 type: String,
                 default: null,
             }
+        }
+    ],
+    studentsEnrolled:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Candidate",
         }
     ],
 },{

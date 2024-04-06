@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -35,6 +36,9 @@ import CreateClasroom from "./pages/CreateClassroom";
 import EditClassRoom from "./pages/EditClassRoom";
 import EnrolledClass from "./components/EnrolledClass";
 import ViewClassroom from "./pages/ViewClassroom";
+import ExploreCourses from "./pages/ExploreCourses";
+import CreatorClassrooms from "./pages/CreatorClassrooms";
+import MyCourseStudentOneCourse from "./pages/MyCourseStudentOneCourse";
 import StudentDashboard from "./components/Student Dashboard/StudentDashboard";
 import TopRatedStudents from "./components/Top Rated Students/TopRatedStudents";
 
@@ -136,6 +140,14 @@ function App() {
             <Route path="/classroom/:id" element={<ViewClassroom />} />
             <Route path="/student-dashboard" element={<StudentDashboard />} />
             <Route path="/top-rated-students" element={<TopRatedStudents />} />
+
+            <Route path="/explore-all-courses" element={<ExploreCourses />} />
+
+            <Route path="/my-classrooms" element={<CreatorClassrooms />} />
+            <Route
+              path="/my-courses/:id"
+              element={<MyCourseStudentOneCourse />}
+            />
           </Routes>
         </div>
       </div>
