@@ -48,21 +48,21 @@ const EnrolledClass = () => {
     getEnrolledClassroom(token);
   }, []);
   return (
-    <div className="flex flex-col gap-10 w-full min-h-screen">
-      <div className="text-center text-4xl h-[12vh] w-full bg-[#191b2e] rounded-md mb-5 flex justify-between items-center">
-        <div className="text-3xl font-medium tracking-wider text-white ml-10">
+    <div className="p-5 text-slate-200 w-full min-h-screen">
+      <div className="text-center text-4xl h-[12vh] w-full bg-[#191b2e] rounded-xl mb-5 flex justify-between items-center p-5">
+        <div className="text-3xl font-black tracking-wider">
           Enrolled Classes
         </div>
-        <div className="mr-10">
-          {/* <div className="p-3 flex gap-2 font-medium tracking-wide text-slate-100 text-sm border border-sky-600 hover:bg-blue-500 hover:text-white hover:cursor-pointer rounded-xl">
+        <div className="">
+          {/* <div className="p-3 flex gap-2 font-medium tracking-wide text-slate-100 text-sm border border-sky-600 hover:bg-blue-500 hover: hover:cursor-pointer rounded-xl">
         <PlusCircle size={20} />    
           Join Class
         </div> */}
 
           <Dialog>
             <DialogTrigger>
-              <div className="p-3 flex gap-2 font-medium tracking-wide text-slate-100 text-sm border border-sky-600 hover:bg-blue-500 hover:text-white hover:cursor-pointer rounded-xl">
-                <PlusCircle size={20} />
+              <div className="px-4 py-2.5 flex gap-2 font-medium tracking-wide text-slate-100 text-lg border bg-blue-500 hover:bg-blue-600 hover:cursor-pointer rounded-xl">
+                <PlusCircle />
                 Join Class
               </div>
             </DialogTrigger>
@@ -91,31 +91,33 @@ const EnrolledClass = () => {
           </Dialog>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-10 justify-center items-center">
+      <div className="grid grid-cols-3 gap-6 justify-center items-center">
         {classrooms.length &&
           classrooms.map((classroom) => (
-            <div className="flex-col gap-4 h-[50vh] w-[50vh] bg-[#191b2e] rounded-md cursor-pointer bg-opacity-100 hover:bg-opacity-90 transition duration-300 ">
-              <div className="w-full h-[50%] bg-slate-200 overflow-auto">
+            <div className="flex-col gap-4 min-h-[50vh] w-[50vh] bg-[#191b2e] rounded-xl cursor-pointer bg-opacity-100 hover:bg-opacity-90 transition duration-300 ">
+              <div className="w-full h-[50%] bg-slate-200 overflow-auto rounded-t-xl">
                 <img
                   src={classroom?.image}
                   alt="classimg"
-                  className="w-full h-full overflow-hidden"
+                  className="w-full h-full overflow-hidden rounded-t-xl"
                 />
               </div>
-              <div className="text-white w-full h-[30%] flex flex-col gap-1 p-2 mt-3">
-                <div className="text-2xl font-medium text-blue-500 tracking-wide pl-2">
+              <div className=" w-full h-[30%] flex flex-col gap-1 p-4 pt-4">
+                <div className="text-2xl font-bold text-blue-500 tracking-wide">
                   {classroom?.name}
                 </div>
-                <div className="text-lg font-normal pl-2 text-slate-300">
+                <div className="text-lg font-normal text-slate-300">
                   {classroom?.description}
                 </div>
               </div>
-              <div className="w-full h-[20%] flex justify-center">
+              <div className="w-full h-[20%] flex justify-center py-4">
                 <Link
                   to={`/classroom/${classroom?._id}`}
                   className="p-2 bg-indigo-500 hover:bg-indigo-600 h-10 w-10 rounded-full flex justify-center items-center"
                 >
-                  <Button className="bg-indigo-500 hover:bg-indigo-600 tracking-wider justify-center items-center">View Classroom</Button>
+                  <Button className="bg-indigo-500 hover:bg-indigo-600 tracking-wider justify-center items-center rounded-xl">
+                    View Classroom
+                  </Button>
                 </Link>
               </div>
             </div>

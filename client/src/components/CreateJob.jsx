@@ -54,7 +54,7 @@ const JobOpeningForm = () => {
     navigate("/viewJobPosts");
   };
   return (
-    <div className="w-full p-10 flex flex-col text-slate-200 justify-center items-center">
+    <div className="w-full p-5 flex flex-col text-slate-200 justify-center items-center">
       <div
         className="w-full text-slate-100 rounded-xl p-4   bg-[#191b2e]
 

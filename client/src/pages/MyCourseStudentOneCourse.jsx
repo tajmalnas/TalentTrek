@@ -1,95 +1,133 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const MyCourseStudentOneCourse = () => {
+  const [courseData, setCourseData] = useState({});
+  const [tab, setTab] = useState(1);
+  const location = useLocation();
+  const courseId = location.pathname.split("/")[2];
 
-    const [courseData,setCourseData] = useState({});
-    const [tab,setTab] = useState(1);
-    const location = useLocation();
-    const courseId = location.pathname.split("/")[2];
-
-    const fetchCourseData = async () =>{
-      try{
-        axios.post('/course/get-course',{
-          courseId
-        }).then((res)=>{
-          console.log("response",res)
-          setCourseData(res.data)
-        }).catch((err)=>{
-          console.log(err.response)
+  const fetchCourseData = async () => {
+    try {
+      axios
+        .post("/course/get-course", {
+          courseId,
         })
-      }catch(err){
-        console.log(err.message)
-      }
+        .then((res) => {
+          console.log("response", res);
+          setCourseData(res.data);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    } catch (err) {
+      console.log(err.message);
     }
+  };
 
-    useEffect(()=>{
-        fetchCourseData()
-    },[])
+  useEffect(() => {
+    fetchCourseData();
+  }, []);
 
   return (
-    <div className="text-white w-full">
-      <div className="text-center text-4xl h-[15vh] w-full flex items-center justify-center bg-[#191b2e] rounded-md mb-5">{courseData.name}</div>
-      <div className="flex gap-8 mt-4 p-4 border-b">
-          <button className={"border border-white rounded-md py-1 px-4 " + (tab===1?"bg-white font-semibold text-black":"")} onClick={()=>setTab(1)}>Videos</button>
-          <button className={"border border-white rounded-md py-1 px-4 " + (tab===2?"bg-white font-semibold text-black":"")} onClick={()=>setTab(2)}>AI Test</button>
-          <button className={"border border-white rounded-md py-1 px-4 " + (tab===3?"bg-white font-semibold text-black":"")} onClick={()=>setTab(3)}>Final Test</button>
+    <div className="text-slate-200 w-full p-5">
+      <div className="text-center text-4xl h-[15vh] w-full flex items-center justify-center bg-[#191b2e] rounded-xl mb-5 font-black tracking-wider">
+        {courseData.name}
       </div>
-      {tab===1 && <div className="flex w-full">
-            {
-                courseData?.videos?.map((video,index) => {
-                    return(
-                        <div key={index} className="w-1/3 p-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
-                                <video className="w-full h-60">
-                                    <source src={video.videoUrl}
-                                     autoPlay={false}
-                                     type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
-                                <div className="text-lg font-medium mt-2">{video.videoTitle}</div>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-          </div>
-      }
-      {tab===2 && <div className="flex w-full">
-            {
-                courseData?.aiTest?.map((question,index) => {
-                    return(
-                        <div key={index} className="w-1/3 p-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
-                                <div className="text-lg font-medium mt-2">{question.question}</div>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-          </div>
-      }
-      {tab===3 && <div className="flex w-full">
-            {
-                courseData?.test?.map((question,index) => {
-                    return(
-                        <div key={index} className="w-1/3 p-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
-                                <div className="text-lg font-medium mt-2">{question.question}</div>
-                                <div className="text-lg font-medium mt-2">{question.options[0]}</div>
-                                <div className="text-lg font-medium mt-2">{question.options[1]}</div>
-                                <div className="text-lg font-medium mt-2">{question.options[2]}</div>
-                                <div className="text-lg font-medium mt-2">{question.options[3]}</div>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-          </div>
-      }
+      <div className="flex gap-8 py-4 border-b border-[#2d2f40]">
+        <button
+          className={
+            "border border-slate-200 rounded-xl font-medium tracking-wide px-4 h-9 text-lg " +
+            (tab === 1 ? "bg-slate-200 font-semibold text-black" : "")
+          }
+          onClick={() => setTab(1)}
+        >
+          Videos
+        </button>
+        <button
+          className={
+            "border border-slate-200 rounded-xl font-medium tracking-wide px-4 h-9 text-lg " +
+            (tab === 2 ? "bg-slate-200 font-semibold text-black" : "")
+          }
+          onClick={() => setTab(2)}
+        >
+          AI Test
+        </button>
+        <button
+          className={
+            "border border-slate-200 rounded-xl font-medium tracking-wide px-4 h-9 text-lg " +
+            (tab === 3 ? "bg-slate-200 font-semibold text-black" : "")
+          }
+          onClick={() => setTab(3)}
+        >
+          Final Test
+        </button>
+      </div>
+      {tab === 1 && (
+        <div className="flex w-full">
+          {courseData?.videos?.map((video, index) => {
+            return (
+              <div key={index} className="w-1/3 mt-5">
+                <div className="bg-gray-800 p-4 rounded-xl">
+                  <video className="w-full h-60">
+                    <source
+                      src={video.videoUrl}
+                      autoPlay={false}
+                      type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                  <div className="text-lg font-medium mt-4 text-center">
+                    {video.videoTitle}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+      {tab === 2 && (
+        <div className="flex flex-wrap gap-6 w-full mt-5">
+          {courseData?.aiTest?.map((question, index) => {
+            return (
+              <div
+                key={index}
+                className="bg-gray-800 p-4 rounded-xl text-lg font-medium"
+              >
+                {question.question}
+              </div>
+            );
+          })}
+        </div>
+      )}
+      {tab === 3 && (
+        <div className="flex w-full mt-5 flex-wrap gap-6">
+          {courseData?.test?.map((question, index) => {
+            return (
+              <div key={index} className="bg-gray-800 p-4 rounded-lg">
+                <div className="text-lg font-medium mt-2">
+                  {question.question}
+                </div>
+                <div className="text-lg font-medium mt-2">
+                  {question.options[0]}
+                </div>
+                <div className="text-lg font-medium mt-2">
+                  {question.options[1]}
+                </div>
+                <div className="text-lg font-medium mt-2">
+                  {question.options[2]}
+                </div>
+                <div className="text-lg font-medium mt-2">
+                  {question.options[3]}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default MyCourseStudentOneCourse
+export default MyCourseStudentOneCourse;
