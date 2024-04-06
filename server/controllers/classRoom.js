@@ -109,12 +109,46 @@ export const enrollCandidate = async (req, res) => {
 }
 
 export const viewClassroom = async (req, res) => {
-    const { classRoomCode } = req.body;
+    const { classroomId } = req.body;
+    console.log(classroomId);
     try {
-        const classroom = await ClassroomModel.findOne({ classRoomCode });
+        const classroom = await ClassroomModel.findById(classroomId);
         res.status(200).json({ classroom });
     }
     catch (error) {
         res.status(404).json({ message: error.message });
     }
+}
+
+export const getCreatorClassrooms = async (req, res) => {
+    const { token } = req.body;
+    const creatorId = jwt.verify(token, process.env.JWT_SECRET).id;
+    const creator = await Creator.findById(creatorId);
+    const classroomIds = creator.classroomCreated;
+    const classrooms = await ClassroomModel.find({ _id: { $in: classroomIds } });
+    res.status(200).json({ classrooms });
+}
+
+export const getEnrolledStudents = async (req, res) => {
+    const {classRoomCode} = req.body;
+    const classroom = await ClassroomModel
+        .findById(classRoomCode)
+        .populate('students');
+    if (!classroom) {
+        return res.status(400).json({msg: 'Classroom not found'});
+    }
+    const students = classroom.students;
+    return res.json({students});
+}
+
+
+export const giveFeedback = async (req, res) => {
+    const { classRoomCode, feedback } = req.body;
+    const classroom = await ClassroomModel.findById(classRoomCode);
+    if (!classroom) {
+        return res.status(400).json({ msg: 'Classroom not found' });
+    }
+    classroom.feedbacks.push(feedback);
+    await classroom.save();
+    return res.json({ msg: 'Feedback added successfully', classroom: classroom });
 }
