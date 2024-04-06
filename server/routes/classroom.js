@@ -1,5 +1,5 @@
 import express from "express";
-import { createClassroom, getClassroom , addVideo, getEnrolledClassroom, enrollCandidate, viewClassroom, getCreatorClassrooms} from "../controllers/classRoom.js";
+import { createClassroom, getClassroom , addVideo, getEnrolledClassroom, enrollCandidate, viewClassroom, getCreatorClassrooms, getEnrolledStudents} from "../controllers/classRoom.js";
 
 const router = express.Router();
 
@@ -10,6 +10,7 @@ router.post("/get-enrolled", getEnrolledClassroom);
 router.post("/enroll", enrollCandidate);
 router.post("/view-classroom", viewClassroom);
 router.post("/get-creator-class", getCreatorClassrooms);
+router.post("/get-enrolled-students", getEnrolledStudents);
 
 
 export default router;

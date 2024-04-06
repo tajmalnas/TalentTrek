@@ -109,9 +109,10 @@ export const enrollCandidate = async (req, res) => {
 }
 
 export const viewClassroom = async (req, res) => {
-    const { classRoomCode } = req.body;
+    const { classroomId } = req.body;
+    console.log(classroomId);
     try {
-        const classroom = await ClassroomModel.findOne({ classRoomCode });
+        const classroom = await ClassroomModel.findById(classroomId);
         res.status(200).json({ classroom });
     }
     catch (error) {
@@ -126,4 +127,10 @@ export const getCreatorClassrooms = async (req, res) => {
     const classroomIds = creator.classroomCreated;
     const classrooms = await ClassroomModel.find({ _id: { $in: classroomIds } });
     res.status(200).json({ classrooms });
+}
+
+export const getEnrolledStudents = async (req, res) => {
+    const {classRoomCode} = req.body;
+    const classroom = await ClassroomModel.findById(classRoomCode).populate('students');
+    res.status(200).json({students:classroom.students});
 }
