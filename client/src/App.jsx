@@ -49,6 +49,8 @@ import ClassTest from "./pages/ClassTest";
 import MyCoursesCandidates from "./pages/MyCoursesCandidates";
 import ClassTestMCQs from "./pages/ClassTestMCQs";
 import FeedbackForm from "./components/feedback-form/FeedbackForm";
+import ChatbotButton from "./components/Chatbot/Chatbot";
+import MCQsTestPage3 from "./pages/MCQS-test-videocam/MCQ3";
 
 axios.defaults.baseURL = "http://localhost:5000/";
 
@@ -89,7 +91,10 @@ function App() {
       <div className="md:min-w-72 md:max-w-72 w-full">
         <Sidebar />
       </div>
-      <div className="w-full">
+      <div>
+        <ChatbotButton />
+      </div>
+      <div className="p-4 w-full">
         <div className="min-h-screen bg-[#030519] flex md:flex-row flex-col md:justify-center">
           <Routes>
             <Route path="/" element={<Landingpage />} />
@@ -164,7 +169,7 @@ function App() {
             <Route exact path="/start-page" element={<StartPage />} />
             <Route path="/ai-interview/:category" element={<AiInterview />} />
 
-            <Route path="/give-class-test/:id" element={<ClassTestMCQs />} />
+            <Route path="/give-class-test/:id" element={<MCQsTestPage3 />} />
             <Route path="/feedback-form" element={<FeedbackForm />} />
             <Route path="/MCQs-test-webcam" element={<MCQsTestPage />} />
           </Routes>
