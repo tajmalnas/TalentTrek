@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken'
 import FinalTestClassroom from '../models/finalTestClassroom.js';
 
 const addFinalTestClassroom = async (req, res) => {
-    const {classroomId,token,marks,totalMarks} = req.body;
-    if (!classroomId || !token || !marks || !totalMarks) {
+    const {token,classroomId,marks,totalMarks} = req.body;
+    if (!classroomId || !token || !totalMarks) {
         return res.status(400).json({ msg: 'All fields are required' });
     }
     try{

@@ -4,8 +4,10 @@ import * as faceapi from 'face-api.js';
 import { IconNumbers } from '@tabler/icons-react';
 import { HelpCircleIcon } from 'lucide-react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const MCQsTestPage3 = ({classroomData}) => {
+    const navigate = useNavigate();
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [submitted, setSubmitted] = useState(false);
     const [questionNumber, setQuestionNumber] = useState(1);
@@ -37,6 +39,7 @@ const MCQsTestPage3 = ({classroomData}) => {
             setInactivityTimer(setTimeout(() => {
               alert("You've been inactive. AI proctoring round is over due to cheating. Your test will be automatically submitted.");
               handleSubmit();
+              // navigate(`/classroom/${classroomData._id}/warning`)
             }, 5000));
           } else {
             document.title = 'Test in Progress';
@@ -100,6 +103,7 @@ const MCQsTestPage3 = ({classroomData}) => {
         }).then((res) => {
             console.log("response",res)
             toast.success("Test Submitted Successfully");
+            // navigate(`/classroom/${classroomData._id}/warning`);
         }
         ).catch((err) => {
             console.log(err.response);

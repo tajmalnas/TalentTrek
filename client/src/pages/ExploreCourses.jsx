@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { IndianRupee } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 const ExploreCourses = () => {
   const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const ExploreCourses = () => {
         })
         .then((res) => {
           console.log("response", res);
+          toast.success("Course Enrolled Successfully");
           navigate("/my-courses-candidates");
         })
         .catch((err) => {
