@@ -6,16 +6,16 @@ import { useLocation } from 'react-router-dom';
 import Webcam from "react-webcam";
 import { toast } from 'react-toastify';
 
-const SpeechToText = ({setPerformance}) => {
+const SpeechToText = ({setPerformance,courseQuestions}) => {
     const location = useLocation();
+
+    courseQuestions = courseQuestions.map((question) => question.question);
 
     const [isRecording, setIsRecording] = useState(false);
     const [note, setNote] = useState('');
     const [notesStore, setNotesStore] = useState([]);
-    const [questions, setQuestions] = useState([
-        "What is MERN stack?",
-        "What is MongoDB?",
-    ]);
+    const [questions, setQuestions] = useState(courseQuestions);
+    console.log("Questions from SpeechToText",questions);
     const [index, setIndex] = useState(0);
     const [timer, setTimer] = useState(10); 
 
@@ -138,13 +138,6 @@ const SpeechToText = ({setPerformance}) => {
                 mark = parseInt(mark);
                 const postId = location.pathname.split('/')[2];
                 console.log("postId",postId);
-                axios.post('/job/add-candidate-marks', {
-                    postId,
-                    token:localStorage.getItem('token'),
-                    marks:mark
-                }).then((res)=>{
-                    console.log(res.data);
-                })
             }
            setPerformance(res.data.analysis); 
         })
@@ -180,7 +173,11 @@ const SpeechToText = ({setPerformance}) => {
 }
 
 
-const AiInterview = () => {
+const AiInterview = ({aiTest}) => {
+
+    const [questions, setQuestions] = useState(aiTest)
+    console.log("Questions from Ai",questions);
+    console.log(questions)
 
     const [performance, setPerformance] = useState('');
     const paragraphs = performance.split('\n\n');
@@ -201,7 +198,7 @@ const AiInterview = () => {
                 </div>
                 </div>
                 <div>
-                    <SpeechToText setPerformance={setPerformance} />
+                    <SpeechToText setPerformance={setPerformance} courseQuestions={questions}/>
                 </div>
             </div>
         </div>
