@@ -119,7 +119,7 @@ function App() {
 
             <Route path="/ai-interview/:id" element={<AiInterview />} />
 
-            {/* <Route path="/meeting/:roomId" element={<Meeting />} /> */}
+            <Route path="/meeting/:roomId" element={<Meeting />} />
             <Route path="/code-editor" element={<Landing />} />
             <Route path="/interview-slot" element={<InterviewSlotsTable />} />
             <Route
