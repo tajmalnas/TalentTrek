@@ -14,12 +14,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 import classroomHeader from "../assets/classroom.jpg";
+import MCQsTestPage3 from "./MCQS-test-videocam/MCQ3";
 
 const ViewClassroom = () => {
   const location = useLocation();
   const [classroom, setClassroom] = useState({});
   const [classVideos, setClassVideos] = useState([]);
   const [classroomId, setClassroomId] = useState("");
+  const [finalTestUnlocked, setFinalTestUnlocked] = useState(false);
   const fetchClassroom = async (classroomId) => {
     try {
       const res = await axios.post("/classroom/view-classroom", {
@@ -40,7 +42,8 @@ const ViewClassroom = () => {
     fetchClassroom(classroomId);
   }, []);
   return (
-    <div className="min-h-screen w-full p-5 mb-14 text-slate-200">
+    <div>
+    {!finalTestUnlocked ?(<div className="min-h-screen w-full p-5 mb-14 text-slate-200">
       <div className="relative">
         <img
           src={classroomHeader}
@@ -88,13 +91,16 @@ const ViewClassroom = () => {
         </div>
 
         <div className="flex justify-end">
-          <Link className="" to={`/give-class-test/${classroomId}`}>
-            <Button className="mt-10 px-4 py-6 text-xl font-medium bg-indigo-500 hover:bg-indigo-600 tracking-wider rounded-xl">
+            <Button className="mt-10 px-4 py-6 text-xl font-medium bg-indigo-500 hover:bg-indigo-600 tracking-wider rounded-xl"
+              onClick={() => setFinalTestUnlocked(true)}
+            >
               Attempt Final Test
             </Button>
-          </Link>
         </div>
       </div>
+    </div>):(
+      <MCQsTestPage3 classroomData= {classroom}/>
+    )}
     </div>
   );
 };

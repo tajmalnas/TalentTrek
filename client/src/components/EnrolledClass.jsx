@@ -91,22 +91,22 @@ const EnrolledClass = () => {
           </Dialog>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-3 gap-6">
         {classrooms.length &&
           classrooms.map((classroom) => (
             <div className="hover:scale-105 flex-col gap-4 bg-[#191b2e] rounded-xl cursor-pointer bg-opacity-100 hover:bg-opacity-90 transition duration-300 ">
-              <div className="w-full h-[50%] bg-slate-200 overflow-auto rounded-t-xl">
+              <div className="w-full bg-slate-200 rounded-t-xl">
                 <img
                   src={classroom?.image}
                   alt="classimg"
-                  className="w-full h-full overflow-hidden rounded-t-xl"
+                  className="object-cover h-40 rounded-t-xl"
                 />
               </div>
-              <div className=" w-full h-[30%] flex flex-col gap-1 p-4 pt-4">
+              <div className=" w-full flex flex-col gap-1 p-4 pt-4">
                 <div className="text-2xl font-bold text-blue-500 tracking-wide">
                   {classroom?.name}
                 </div>
-                <div className="text-lg font-normal text-slate-300">
+                <div className="text-lg font-normal text-slate-300 ">
                   {classroom?.description}
                 </div>
               </div>
@@ -115,7 +115,7 @@ const EnrolledClass = () => {
                   to={`/classroom/${classroom?._id}`}
                   className="w-full flex justify-center items-center"
                 >
-                  <Button className="w-full bg-indigo-500 hover:bg-indigo-600 tracking-wider justify-center items-center rounded-xl">
+                  <Button className="w-full text-lg bg-indigo-500 hover:bg-indigo-600 tracking-wider justify-center items-center rounded-xl">
                     View Classroom
                   </Button>
                 </Link>
