@@ -25,7 +25,7 @@ const CreatorClassrooms = () => {
       <div className="text-center text-4xl h-[15vh] w-full flex items-center justify-center bg-[#191b2e] rounded-md font-black tracking-wider">
         Created Classes
       </div>
-      <div className="mt-5 grid grid-cols-3">
+      <div className="mt-5 grid grid-cols-3 gap-5">
         {classrooms.length &&
           classrooms.map((classroom) => (
             <div className="flex-col gap-4 pb-4 bg-[#191b2e] rounded-xl cursor-pointer bg-opacity-100 hover:bg-opacity-90 transition duration-300">
