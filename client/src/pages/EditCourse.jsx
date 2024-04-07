@@ -9,6 +9,7 @@ import { v4 } from "uuid";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import AITestCreation from "./AITestCreation";
 import FinalTest from "./FinalTest";
+import { toast } from "react-toastify";
 
 const EditCourse = () => {
   const location = useLocation();
@@ -43,9 +44,12 @@ const EditCourse = () => {
   const handleFileUpload = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
+      const uploadToastId = toast.loading("Uploading Video");
       const imgref = ref(imageDb, `files/${v4()}`);
       uploadBytes(imgref, selectedFile).then((value) => {
         console.log("image uploaded", value);
+        toast.dismiss(uploadToastId);
+        toast.success("Video uploaded successfully!")
         getDownloadURL(value.ref).then((url) => {
           console.log("url", url);
           setVideoUrl(url);

@@ -70,10 +70,12 @@ const EditCourse = () => {
   const handleFileUpload = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
+      const uploadToastId = toast.loading("Uploading video");
       const imgref = ref(imageDb, `files/${v4()}`);
       uploadBytes(imgref, selectedFile).then((value) => {
         console.log("image uploaded", value);
-        toast.success("Video uploaded successfully");
+        toast.dismiss(uploadToastId);
+        toast.success("Video uploaded successfully!");
         getDownloadURL(value.ref).then((url) => {
           console.log("url", url);
           setVideoUrl(url);
