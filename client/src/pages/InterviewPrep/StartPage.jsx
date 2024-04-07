@@ -14,7 +14,7 @@ const StartPage = () => {
         Prepare for Interviews
       </div>
 
-      <div className="gap-4 grid grid-cols-3 mt-10">
+      <div className="gap-4 grid grid-cols-3 mt-5">
         <Card title="DSA" category="dsa" image={dsaImg} />
         <Card title="Frontend" category="frontend" image={frontendImg} />
         <Card title="Backend" category="backend" image={backendImg} />
