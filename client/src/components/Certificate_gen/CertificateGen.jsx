@@ -1,8 +1,8 @@
 import React, { useCallback, useRef } from "react";
 import { toPng } from "html-to-image";
-import Template from "./assets/template.jpg";
+import Template from "../../assets/template.jpg";
 
-const App = () => {
+const CertificateGen = () => {
   const ref = useRef(null);
 
   const onButtonClick = useCallback(() => {
@@ -24,7 +24,7 @@ const App = () => {
 
   const course = "The Web Development Course";
   const instructor = "Angela Yu";
-  const student = "Rajat Sharma";
+  const student = "Taj Malnas";
   return (
     <div className="flex flex-col items-center mt-20">
       <button
@@ -35,7 +35,7 @@ const App = () => {
       </button>
       <div
         className="relative p-4 flex
-font-sans "
+font-sans text-gray-800"
         ref={ref}
       >
         <img src={Template} alt="" />
@@ -56,4 +56,4 @@ font-sans "
   );
 };
 
-export default App;
+export default CertificateGen;

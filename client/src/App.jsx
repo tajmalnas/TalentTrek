@@ -51,6 +51,7 @@ import ClassTestMCQs from "./pages/ClassTestMCQs";
 import FeedbackForm from "./components/feedback-form/FeedbackForm";
 import ChatbotButton from "./components/Chatbot/Chatbot";
 import MCQsTestPage3 from "./pages/MCQS-test-videocam/MCQ3";
+import CertificateGen from "./components/Certificate_gen/CertificateGen";
 
 axios.defaults.baseURL = "http://localhost:5000/";
 
@@ -172,6 +173,8 @@ function App() {
             <Route path="/give-class-test/:id" element={<MCQsTestPage3 />} />
             <Route path="/feedback-form" element={<FeedbackForm />} />
             <Route path="/MCQs-test-webcam" element={<MCQsTestPage />} />
+
+            <Route path='/generate-certificate/teacher' element={<CertificateGen/>}/>
           </Routes>
         </div>
       </div>
