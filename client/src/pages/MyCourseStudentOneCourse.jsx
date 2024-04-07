@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import MCQsTestPage from "./MCQS-test-videocam/MCQ2";
+import AiInterview from "./AiInterview/AiInterview";
 
 const MyCourseStudentOneCourse = () => {
   const [courseData, setCourseData] = useState({});
@@ -71,7 +72,7 @@ const MyCourseStudentOneCourse = () => {
             return (
               <div key={index} className="">
                 <div className="bg-gray-800 p-4 rounded-lg">
-                  <video className="w-full h-60 object-cover">
+                  <video controls className="w-full h-60 object-cover">
                     <source
                       src={video.videoUrl}
                       autoPlay={false}
@@ -91,31 +92,7 @@ const MyCourseStudentOneCourse = () => {
       )}
       {tab === 3 && <MCQsTestPage courseData={courseData} />}
       {tab === 2 && (
-        <div className="flex w-full">
-          {courseData?.test?.map((question, index) => {
-            return (
-              <div key={index} className="w-1/3 p-4">
-                <div className="bg-gray-800 p-4 rounded-lg">
-                  <div className="text-lg font-medium mt-2">
-                    {question.question}
-                  </div>
-                  <div className="text-lg font-medium mt-2">
-                    {question.options[0]}
-                  </div>
-                  <div className="text-lg font-medium mt-2">
-                    {question.options[1]}
-                  </div>
-                  <div className="text-lg font-medium mt-2">
-                    {question.options[2]}
-                  </div>
-                  <div className="text-lg font-medium mt-2">
-                    {question.options[3]}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <AiInterview aiTest={courseData.aiTest}/>
       )}
     </div>
   );

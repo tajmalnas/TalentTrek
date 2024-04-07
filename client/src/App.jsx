@@ -17,7 +17,7 @@ import CreateJob from "./components/CreateJob";
 import ViewJobPosts from "./components/ViewJobPosts";
 import ShortlistedCandidates from "./components/ShortlistedCandidates";
 import CodeEditor from "./pages/CodeEditor";
-// import AiInterview from "./pages/AiInterview/AiInterview";
+import AiInterview from "./pages/AiInterview/AiInterview";
 import ExploreAllJobs from "./components/ExploreAllJobs";
 import ProfilePage from "./pages/profile-page/ProfilePage";
 import InterviewSlotsTable from "./components/InterviewSlotsTable";
@@ -31,7 +31,7 @@ import Feedback from "./components/Feedback";
 import CreatorEdit from "./pages/CreatorEdit";
 import CreateCourse from "./pages/CreateCourse";
 import EditCourse from "./pages/EditCourse";
-import AiInterview from "./pages/InterviewPrep/AiInterview";
+// import AiInterview from "./pages/InterviewPrep/AiInterview";
 import StartPage from "./pages/InterviewPrep/StartPage";
 import MCQsTestPage from "./pages/MCQS-test-videocam/MCQs";
 
@@ -117,7 +117,7 @@ function App() {
             <Route path="/edit-candidate" element={<CandidateEdit />} />
             <Route path="/edit-creator" element={<CreatorEdit />} />
 
-            {/* <Route path="/ai-interview/:id" element={<AiInterview />} /> */}
+            <Route path="/ai-interview/:id" element={<AiInterview />} />
 
             {/* <Route path="/meeting/:roomId" element={<Meeting />} /> */}
             <Route path="/code-editor" element={<Landing />} />
@@ -167,7 +167,7 @@ function App() {
             />
             <Route path="/class-test/:id" element={<ClassTest />} />
             <Route exact path="/start-page" element={<StartPage />} />
-            <Route path="/ai-interview/:category" element={<AiInterview />} />
+            {/* <Route path="/ai-interview/:category" element={<AiInterview />} /> */}
 
             <Route path="/give-class-test/:id" element={<MCQsTestPage3 />} />
             <Route path="/feedback-form" element={<FeedbackForm />} />
