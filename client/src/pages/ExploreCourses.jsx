@@ -72,7 +72,7 @@ const ExploreCourses = () => {
                     alt="Colors"
                   />
                   <p class="absolute top-0 bg-yellow-500 text-white font-semibold py-2 px-4 rounded-br-lg rounded-tl-lg flex justify-center item-center">
-                    <IndianRupee size={18} />
+                    <IndianRupee className="mt-1" size={18} />
                     <span>{course.price}</span>
                   </p>
                 </div>
