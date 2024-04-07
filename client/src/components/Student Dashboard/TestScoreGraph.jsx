@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
+import { Axios } from "axios";
 
 const TestScoreGraph = () => {
   const [testScores, setTestScores] = useState([]);
