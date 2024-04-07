@@ -31,7 +31,7 @@ const MyCoursesCandidates = () => {
   return (
     <div className="text-slate-200 w-full p-5 mb-14">
       <div className="text-center text-4xl h-[15vh] w-full flex items-center justify-center bg-[#191b2e] rounded-md font-black tracking-wider">
-        Explore Courses
+        My Courses
       </div>
       <div className="mt-5 md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 space-y-4 md:space-y-0">
         {courses.length > 0 &&

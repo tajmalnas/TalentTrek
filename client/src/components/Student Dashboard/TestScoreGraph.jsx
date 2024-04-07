@@ -1,18 +1,35 @@
 import React, { useState, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import { Axios } from "axios";
+import axios from "axios";
 
 const TestScoreGraph = () => {
   const [testScores, setTestScores] = useState([]);
   const chartRef = useRef(null);
+  const fetchData = async (token) => {
+    try {
+      const res = await axios.post("/final-test/getFinal", { token });
+      console.log("score", res.data.finalTest);
+      setTestScores(
+        res.data.finalTest.map((score) => score.marks / score.totalMarks)
+      );
+    } catch (error) {
+      console.error(err.response || err.message);
+    }
+  };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    fetchData(token);
+
+    // Call the async function
+  }, []);
 
   // Mock test scores data
-  useEffect(() => {
-    // Assuming you fetch test scores from an API or any other source
-    // Here, we are just mocking the data
-    const mockTestScores = [80, 75, 85, 90, 78]; // Example test scores
-    setTestScores(mockTestScores);
-  }, []);
+  // useEffect(() => {
+  //   // Assuming you fetch test scores from an API or any other source
+  //   // Here, we are just mocking the data
+  //   const mockTestScores = [80, 75, 85, 90, 78]; // Example test scores
+  //   setTestScores(mockTestScores);
+  // }, []);
 
   useEffect(() => {
     // Destroy existing chart before creating a new one
