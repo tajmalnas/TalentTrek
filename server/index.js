@@ -19,6 +19,7 @@ import Code from './routes/code.js'
 import Course from './routes/Course.js'
 import Classroom from './routes/classroom.js';
 import FinalTest from './routes/FinalTest.js'
+import FinalTestClassroom from './routes/finalTestClassroom.js'
 
 dotenv.config();
 const stripe = Stripe(process.env.SECRET_KEY);
@@ -88,6 +89,7 @@ app.use('/course',Course);
 app.use('/classroom',Classroom);
 
 app.use('/final-test',FinalTest)
+app.use('/final-test-classroom',FinalTestClassroom)
 
 app.listen(PORT, () => {
     console.log(`Server listening on port : ${PORT}`);
