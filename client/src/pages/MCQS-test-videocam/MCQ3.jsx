@@ -6,6 +6,7 @@ import { HelpCircleIcon } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 const MCQsTestPage3 = ({classroomData}) => {
+    const [scorePassed,setScorePassed] = useState(true);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [submitted, setSubmitted] = useState(false);
     const [questionNumber, setQuestionNumber] = useState(1);
@@ -90,6 +91,9 @@ const MCQsTestPage3 = ({classroomData}) => {
         for (let i=0;i<finalArray.length;i++) {
             if (finalArray[i].selectedOption === finalArray[i].correctOption) {
                 score++;
+            }
+            if(score>=1) {
+                setScorePassed(true);
             }
         }
         axios.post('/final-test-classroom',{
@@ -271,6 +275,10 @@ const MCQsTestPage3 = ({classroomData}) => {
         );
       })}
 
+      <div>
+                <p className="text-lg font-semibold bg-blue-800 text-white rounded-md px-4 py-2 mt-4">Download Certificatet</p>
+            </div>
+
       <button
         onClick={handleSubmit}
         className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
@@ -280,9 +288,16 @@ const MCQsTestPage3 = ({classroomData}) => {
       </button>
       {submitted && (
         <p className="text-lg mt-4">
+            
           Your Score: {calculateScore()} / {finalArray.length}
+            
+        )
         </p>
+        
       )}
+      {
+        
+      }
     
     </div>
   );
