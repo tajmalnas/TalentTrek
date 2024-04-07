@@ -76,6 +76,16 @@ const courseSchema = new Schema({
             ref: "Candidate",
         }
     ],
+    rating : {
+        numberOfRatings:{
+            type: Number,
+            default: 0,
+        },
+        totalRating:{
+            type: Number,
+            default: 0,
+        },
+    }
 },{
     timestamps: true,
 });

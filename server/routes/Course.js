@@ -9,7 +9,8 @@ import {
     addFinalQuestions,
     getFinalQuestions,
     getAllCourses,
-    enrollInCourse
+    enrollInCourse,
+    myCourseCandidates
 } from "../controllers/Course.js";
 
 const router = express.Router();
@@ -27,5 +28,6 @@ router.post('/get-final-questions',getFinalQuestions);
 
 router.get('/get-all-courses',getAllCourses);
 router.post('/enroll-in-course',enrollInCourse);
+router.post('/my-course-candidates',myCourseCandidates);
 
 export default router;

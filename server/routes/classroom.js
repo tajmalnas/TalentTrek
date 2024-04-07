@@ -11,6 +11,7 @@ router.post("/enroll", enrollCandidate);
 router.post("/view-classroom", viewClassroom);
 router.post("/get-creator-class", getCreatorClassrooms);
 router.post("/get-enrolled-students", getEnrolledStudents);
-
+router.post("/add-final-questions", addFinalQuestions);
+router.post("/get-final-questions", getFinalQuestions);
 
 export default router;
